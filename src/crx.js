@@ -114,7 +114,7 @@ class ChromeExtension {
   }
 
   /**
-   * Generates a SHA1 package signature.
+   * Generates a SHA256 package signature.
    *
    * BC BREAK `this.signature` is not stored anymore (since 1.0.0)
    *
@@ -124,7 +124,7 @@ class ChromeExtension {
   generateSignature (contents) {
     return Buffer.from(
       crypto
-        .createSign("sha1")
+        .createSign("sha256")
         .update(contents)
         .sign(this.privateKey),
       "binary"
